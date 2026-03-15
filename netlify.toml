@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20" # Vite 8 requires Node 18 or 20+
+  NPM_FLAGS = "--legacy-peer-deps" # Use this if you hit that Tailwind v4/Vite 8 conflict
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
