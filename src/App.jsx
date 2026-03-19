@@ -30,6 +30,7 @@ function App() {
   const [scrollY, setScrollY] = useState(0);
   const [activeToasts, setActiveToasts] = useState([]);
   const [isExecuted, setIsExecuted] = useState(false);
+  const [inputMessage, setInputMessage] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const mediaItems = [
@@ -178,13 +179,13 @@ function App() {
              <div className="w-full max-w-xl text-center">
                 {!isExecuted ? (
                   <div className="relative flex items-center bg-black/40 border border-white/10 rounded-2xl p-1 focus-within:border-[#FCFF74] transition-all">
-                    <input type="text" placeholder="Message #vasu-bhandman..." className="w-full bg-transparent py-4 px-4 text-white text-sm md:text-base outline-none" />
+                    <input type="text" placeholder="Message #vasu-bhandman..." className="w-full bg-transparent py-4 px-4 text-white text-sm md:text-base outline-none" value={inputMessage} onChange={e => setInputMessage(e.target.value)} />
                     <button onClick={handleExecute} className="bg-[#E01E5A] text-white font-black px-8 py-3 rounded-xl uppercase text-[10px] tracking-widest">Execute</button>
                   </div>
                 ) : (
-                  <div className="animate-bounce-in flex flex-col items-center space-y-6">
-                    <h3 className="text-[#4ADE80] font-black uppercase text-xs">Disbursement Authorized</h3>
-                    <a href="YOUR_AMAZON_LINK" target="_blank" rel="noopener noreferrer" className="px-12 py-5 bg-[#FCFF74] text-black font-black rounded-2xl shadow-[0_0_50px_rgba(252,255,116,0.4)] uppercase text-xs tracking-widest">Claim Gift Card</a>
+                  <div className="animate-bounce-in flex flex-col items-center space-y-4">
+                    <h3 className="text-[#4ADE80] font-black uppercase text-xs">Message Sent. Happy Birthday Bhandman 🌿</h3>
+                    {inputMessage && <p className="text-white/70 text-sm italic">"{inputMessage}"</p>}
                   </div>
                 )}
              </div>
